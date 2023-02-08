@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "./Launches.css";
-import { fetchLaunchData } from "../../features/Launches";
+import { fetchLaunchData } from "./LaunchesSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import "../../common/stylesheets/App.css";
 
 export default function LaunchCards(props) {
-	const { data, loading, error } = useSelector((state) => state.launches);
 	const dispatch = useDispatch();
+	const { data, loading, error } = useSelector((state) => state.launches);
 
 	const body = {
 		query: {},
@@ -46,16 +46,20 @@ export default function LaunchCards(props) {
 	}
 
 	if (loading) {
-		return <div className='m-3 h3 text-primary'>Loading...</div>;
+		return <div className='m-3 h4 text-primary'>Loading...</div>;
 	}
 
 	if (error) {
-		return <div className='m-3 h3 text-danger'>{error}</div>;
+		return <div className='m-3 h4 text-danger'>{error}</div>;
+	}
+
+	if (data.docs <= 0) {
+		return <div className='m-3 h4 text-dark'>Nothing to display</div>;
 	}
 
 	return (
 		<section>
-			<p className='h4 mx-4'>Displaying {data.docs?.length} records</p>
+			<p className='m-3 h4 text-dark'>Displaying {data.totalDocs} records</p>
 			<div className='card-container'>
 				{data.docs?.map((item) => (
 					<div key={item.id} className='card m-3'>
@@ -64,12 +68,8 @@ export default function LaunchCards(props) {
 							<h3 className='card-title fw-bold mb-3'>{item.name}</h3>
 							<div className='card-text fw-bold my-2'>Flight Number: {item.flight_number}</div>
 							<div className='card-text fw-bold my-2'>Launch Date: {new Date(item.date_utc).toLocaleDateString("en-UK")}</div>
-							<div className='card-text fw-bold my-2'>
-								Mission Status: {item.success ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}
-							</div>
-							<div className='card-text fw-bold my-2'>
-								Upcoming Status: {item.upcoming ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}
-							</div>
+							<div className='card-text fw-bold my-2'>Mission Status: {item.success ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}</div>
+							<div className='card-text fw-bold my-2'>Upcoming Status: {item.upcoming ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}</div>
 						</div>
 					</div>
 				))}

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import LaunchCards from "./LaunchCards";
-import "./Launches.css";
+import LaunchCards from "./LaunchesCards";
+import "../../common/stylesheets/App.css";
 
 export default function LaunchComponent() {
 	const [filters, setFilters] = useState({
 		searchToken: "",
-		upcomingToken: "",
 		statusToken: "",
+		upcomingToken: "",
 		dateToken: "",
 		resetToken: false,
 	});
@@ -39,14 +39,14 @@ export default function LaunchComponent() {
 
 	const updateReset = () => {
 		setFilters({ searchToken: "", upcomingToken: "", statusToken: "", dateToken: "", resetToken: false });
-		document.getElementById("search").value = "";
+		document.getElementById("searchBar").value = "";
 	};
 
 	return (
 		<section>
-			<div className='d-flex align-items-center justify-content-evenly'>
-				<div className='d-inline-flex align-items-center m-4'>
-					<input type='text' name='search-input' placeholder='Search...' className='form-control shadow-none' id='search' onChange={handleSearch} />
+			<div className='d-flex align-items-center justify-content-start'>
+				<div className='search-bar d-inline-flex align-items-center m-4'>
+					<input type='text' name='search-input' placeholder='Search...' className='form-control shadow-none w-100' id='searchBar' onChange={handleSearch} />
 				</div>
 
 				<div className='btn-group m-4'>
