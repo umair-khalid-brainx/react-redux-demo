@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import LaunchSlice from "../features/launches/LaunchesSlice";
+import LaunchSlice from "../features/Launches/Slice";
 
 const store = configureStore({
 	reducer: {

@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { fetchLaunchData } from "./LaunchesSlice";
+import { fetchLaunchData } from "./Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import "../../common/stylesheets/App.css";
+import Card from "./Card";
 
 export default function LaunchCards(props) {
 	const dispatch = useDispatch();
@@ -62,16 +63,7 @@ export default function LaunchCards(props) {
 			<p className='m-3 h4 text-dark'>Displaying {data.totalDocs} records</p>
 			<div className='card-container'>
 				{data.docs?.map((item) => (
-					<div key={item.id} className='card m-3'>
-						<img className='card-img-top' src={require("../../assets/images/spacex.jpg")} alt='card-img' />
-						<div className='card-body'>
-							<h3 className='card-title fw-bold mb-3'>{item.name}</h3>
-							<div className='card-text fw-bold my-2'>Flight Number: {item.flight_number}</div>
-							<div className='card-text fw-bold my-2'>Launch Date: {new Date(item.date_utc).toLocaleDateString("en-UK")}</div>
-							<div className='card-text fw-bold my-2'>Mission Status: {item.success ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}</div>
-							<div className='card-text fw-bold my-2'>Upcoming Status: {item.upcoming ? <div className='green-dot mx-3'></div> : <div className='red-dot mx-3'></div>}</div>
-						</div>
-					</div>
+					<Card item={item} />
 				))}
 			</div>
 		</section>
