@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Listing from "./Listing";
 import Filters from "./Filters";
-import "../../common/stylesheets/App.css";
+import "../../stylesheets/App.css";
 
 export default function LaunchComponent() {
 	const [filters, setFilters] = useState({

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import "../../common/stylesheets/App.css";
+import "../../stylesheets/App.css";
 
 export default function Header() {
 	return (
