@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LaunchesFilters(props) {
+export default function Filters(props) {
 	return (
 		<div className='d-flex align-items-center justify-content-start'>
 			<div className='search-bar d-inline-flex align-items-center m-4'>

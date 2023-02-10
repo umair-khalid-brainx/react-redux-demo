@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { fetchLaunchData } from "./Slice";
+import { fetchLaunchData } from "../../store/actions/LaunchAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import "../../stylesheets/App.css";
 import Card from "./Card";
+import "../../assets/stylesheets/App.css";
 
-export default function LaunchCards(props) {
+export default function Listing(props) {
 	const dispatch = useDispatch();
 	const { data, loading, error } = useSelector((state) => state.launches);
 
@@ -20,6 +20,7 @@ export default function LaunchCards(props) {
 	};
 
 	useEffect(() => {
+		debugger;
 		if (props.filters.resetToken === true) {
 			body.query = {};
 			props.updateReset();

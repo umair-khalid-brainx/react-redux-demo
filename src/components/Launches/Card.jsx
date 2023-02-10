@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LaunchesCard(props) {
+export default function Card(props) {
 	return (
 		<div key={props.item.id} className='card m-3'>
 			<img className='card-img-top' src={require("../../assets/images/spacex.jpg")} alt='card-img' />

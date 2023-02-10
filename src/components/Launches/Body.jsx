@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Listing from "./Listing";
 import Filters from "./Filters";
-import "../../stylesheets/App.css";
+import "../../assets/stylesheets/App.css";
 
-export default function LaunchComponent() {
+export default function Body() {
 	const [filters, setFilters] = useState({
 		searchToken: "",
 		statusToken: "",

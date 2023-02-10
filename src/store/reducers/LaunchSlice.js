@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const LaunchSlice = createSlice({
 	name: "launches",
@@ -25,15 +24,4 @@ const LaunchSlice = createSlice({
 });
 
 export const { fetchLaunchStart, fetchLaunchSuccess, fetchLaunchFailure } = LaunchSlice.actions;
-
-export const fetchLaunchData = (body) => async (dispatch) => {
-	try {
-		dispatch(fetchLaunchStart());
-		const response = await axios.post("https://api.spacexdata.com/latest/launches/query", body);
-		dispatch(fetchLaunchSuccess(response.data));
-	} catch (error) {
-		dispatch(fetchLaunchFailure(error.message));
-	}
-};
-
 export default LaunchSlice;
