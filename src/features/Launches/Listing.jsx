@@ -2,7 +2,7 @@
 import { fetchLaunchData } from "./Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import "../../common/stylesheets/App.css";
+import "../../stylesheets/App.css";
 import Card from "./Card";
 
 export default function LaunchCards(props) {
